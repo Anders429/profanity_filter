@@ -1,38 +1,84 @@
+// TODO: Figure out how to use once_cell in no_std environment.
+#![no_std]
+
 use once_cell::sync::Lazy;
 use word_filter::{Options, WordFilter};
 
 pub static PROFANITY_FILTER: Lazy<WordFilter<'static>> = Lazy::new(|| WordFilter::new(
     // Filtered words.
     &[
+        // Probably the best source on the web for these words:
+        // https://www.reddit.com/r/copypasta/comments/fca22g/every_swear_word_in_alphabetical_order/
+
         // Profane.
+        "dammit",
         "damn",
+        "damnit",
+        "goddammit",
+        "goddamn",
+        "goddamnit",
         // Vulgar.
         "anal",
         "analplug",
+        "analplugs",
         "ass",
+        "asses",
         "asshole",
         "blowjob",
         "bullshit",
         "cock",
+        "cocks",
         "cocksucker",
+        "cocksuckers",
+        "cocksucking",
         "cum",
+        "cummed",
+        "cumming",
+        "cums",
         "cumshot",
         "cunt",
         "dick",
         "dickhead",
+        "dumbass",
+        "dumbasses",
         "fuck",
+        "fucked",
         "fucker",
+        "fuckers",
+        "fucking",
+        "fucks",
+        "jackass",
+        "jackasses",
+        "jackassery",
+        "jerkoff",
+        "jerkedoff",
+        "jerkingoff",
+        "jizz",
+        "jizzing",
         "motherfuck",
         "motherfucker",
+        "motherfucking",
         "pussy",
         "sex",
         "shit",
+        "shits",
+        "shittier",
+        "shittiest",
+        "shitting",
+        "shitty",
         // Offensive.
         "bastard",
+        "bastards",
         "bitch",
+        "bitched",
+        "bitches",
+        "bitching",
         "chink",
         "coon",
         "nigger",
+        "niggers",
+        "slut",
+        "sluts",
         // Emoji.
         "🖕",
     ],
@@ -74,6 +120,7 @@ pub static PROFANITY_FILTER: Lazy<WordFilter<'static>> = Lazy::new(|| WordFilter
         "tympanal",
         // ass
         "antimacassar",
+        "as s",
         "assai",
         "assassin",
         "assault",
@@ -258,6 +305,18 @@ pub static PROFANITY_FILTER: Lazy<WordFilter<'static>> = Lazy::new(|| WordFilter
         "uncock",
         "weathercock",
         "woodcock",
+        // cum
+        // https://www.thefreedictionary.com/words-containing-cum 7-letter
+        "acumen",
+        "cumber",
+        "cumbia",
+        "cumin",
+        "cummin",
+        "cumuli",
+        "locum",
+        "scum",
+        "talcum",
+        
     ],
     // Separators.
     &[" ", "_", "-", ".", "\n", "\t"],
@@ -423,6 +482,8 @@ pub static PROFANITY_FILTER: Lazy<WordFilter<'static>> = Lazy::new(|| WordFilter
         // Slang.
         ("ck", "k"),
         ("er", "a"),
+        ("ing", "in"),
+        ("ing", "in'"),
         // Multi-character expansions.
         ("a", "(L"),
         ("A", "/\\"),
@@ -449,5 +510,12 @@ mod tests {
     fn finds_bad_words() {
         assert_eq!(PROFANITY_FILTER.censor("FuCk"), "****");
         assert_eq!(PROFANITY_FILTER.censor("nigga"), "*****");
+        assert_eq!(PROFANITY_FILTER.censor("🖕🏿"), "**");
+    }
+
+    #[test]
+    fn long() {
+        //dbg!(PROFANITY_FILTER.find("What the fuck did you just fucking say about me, you little bitch? I’ll have you know I graduated top of my class in the Navy Seals, and I’ve been involved in numerous secret raids on Al-Quaeda, and I have over 300 confirmed kills. I am trained in gorilla warfare and I’m the top sniper in the entire US armed forces. You are nothing to me but just another target. I will wipe you the fuck out with precision the likes of which has never been seen before on this Earth, mark my fucking words. You think you can get away with saying that shit to me over the Internet? Think again, fucker. As we speak I am contacting my secret network of spies across the USA and your IP is being traced right now so you better prepare for the storm, maggot. The storm that wipes out the pathetic little thing you call your life. You’re fucking dead, kid. I can be anywhere, anytime, and I can kill you in over seven hundred ways, and that’s just with my bare hands. Not only am I extensively trained in unarmed combat, but I have access to the entire arsenal of the United States Marine Corps and I will use it to its full extent to wipe your miserable ass off the face of the continent, you little shit. If only you could have known what unholy retribution your little “clever” comment was about to bring down upon you, maybe you would have held your fucking tongue. But you couldn’t, you didn’t, and now you’re paying the price, you goddamn idiot. I will shit fury all over you and you will drown in it. You’re fucking dead, kiddo."));
+        assert!(!PROFANITY_FILTER.check("as someone once said,"));
     }
 }

@@ -311,6 +311,7 @@ pub static PROFANITY_FILTER: Lazy<WordFilter<'static>> = Lazy::new(|| WordFilter
         "cumber",
         "cumbia",
         "cumin",
+        "cumlaude",
         "cummin",
         "cumuli",
         "locum",

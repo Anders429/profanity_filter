@@ -8,10 +8,8 @@ pub static PROFANITY_FILTER: Lazy<WordFilter<'static>> = Lazy::new(|| WordFilter
         // https://www.reddit.com/r/copypasta/comments/fca22g/every_swear_word_in_alphabetical_order/
 
         // Profane.
-        "dammit",
         "damn",
         "damnit",
-        "goddammit",
         "goddamn",
         "goddamnit",
         // Vulgar.
@@ -479,6 +477,7 @@ pub static PROFANITY_FILTER: Lazy<WordFilter<'static>> = Lazy::new(|| WordFilter
         ("Z", "Ζ"),
         // Slang.
         ("ck", "k"),
+        ("damnit", "dammit"),
         ("er", "a"),
         ("ing", "in"),
         ("ing", "in'"),

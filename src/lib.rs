@@ -512,6 +512,14 @@ mod tests {
     }
 
     #[test]
+    fn anal() {
+        assert_eq!(PROFANITY_FILTER.find("anAl"), vec!["anal"].into_boxed_slice());
+        assert_eq!(PROFANITY_FILTER.find("ANALPLUG"), vec!["analplug"].into_boxed_slice());
+        assert_eq!(PROFANITY_FILTER.find("anal plugs"), vec!["analplugs"].into_boxed_slice());
+        assert_eq!(PROFANITY_FILTER.find("analysis"), vec![].into_boxed_slice());
+    }
+
+    #[test]
     fn finds_bad_words() {
         assert_eq!(PROFANITY_FILTER.censor("FuCk"), "****");
         assert_eq!(PROFANITY_FILTER.censor("nigga"), "*****");

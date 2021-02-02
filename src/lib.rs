@@ -1,7 +1,6 @@
-// TODO: Figure out how to use once_cell in no_std environment.
 #![no_std]
 
-use once_cell::sync::Lazy;
+use once_cell::unsync::Lazy;
 use word_filter::{Options, WordFilter};
 
 pub static PROFANITY_FILTER: Lazy<WordFilter<'static>> = Lazy::new(|| WordFilter::new(
@@ -311,7 +310,7 @@ pub static PROFANITY_FILTER: Lazy<WordFilter<'static>> = Lazy::new(|| WordFilter
         "cumber",
         "cumbia",
         "cumin",
-        "cumlaude",
+        "cumlaude",  // suma cum laude, etc.
         "cummin",
         "cumuli",
         "locum",
@@ -512,6 +511,7 @@ mod tests {
         assert_eq!(PROFANITY_FILTER.censor("FuCk"), "****");
         assert_eq!(PROFANITY_FILTER.censor("nigga"), "*****");
         assert_eq!(PROFANITY_FILTER.censor("🖕🏿"), "**");
+        assert_eq!(PROFANITY_FILTER.censor("@$$"), "***");
     }
 
     #[test]

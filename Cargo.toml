@@ -5,5 +5,5 @@ authors = ["Anders Evensen"]
 edition = "2018"
 
 [dependencies]
-once_cell = "1.5.2"
+once_cell = {version = "1.5.2", default-features = false}
 word_filter = "0.1.3"

@@ -504,6 +504,14 @@ mod tests {
     use crate::PROFANITY_FILTER;
 
     #[test]
+    fn damn() {
+        assert_eq!(PROFANITY_FILTER.censor("Damn"), "****");
+        assert!(PROFANITY_FILTER.check("dammit"));
+        assert_eq!(PROFANITY_FILTER.find("God damn!"), vec!["goddamn"].into_boxed_slice());
+        assert_eq!(PROFANITY_FILTER.censor("god DAMMIT!"), "**********!");
+    }
+
+    #[test]
     fn finds_bad_words() {
         assert_eq!(PROFANITY_FILTER.censor("FuCk"), "****");
         assert_eq!(PROFANITY_FILTER.censor("nigga"), "*****");

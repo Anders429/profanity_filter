@@ -505,10 +505,10 @@ mod tests {
 
     #[test]
     fn damn() {
-        assert_eq!(PROFANITY_FILTER.censor("Damn"), "****");
-        assert!(PROFANITY_FILTER.check("dammit"));
+        assert_eq!(PROFANITY_FILTER.find("Damn"), vec!["damn"].into_boxed_slice());
+        assert_eq!(PROFANITY_FILTER.find("dammit"), vec!["damnit"].into_boxed_slice());
         assert_eq!(PROFANITY_FILTER.find("God damn!"), vec!["goddamn"].into_boxed_slice());
-        assert_eq!(PROFANITY_FILTER.censor("god DAMMIT!"), "**********!");
+        assert_eq!(PROFANITY_FILTER.find("god DAMMIT!"), vec!["goddamnit"].into_boxed_slice());
     }
 
     #[test]

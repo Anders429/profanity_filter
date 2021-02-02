@@ -1,6 +1,4 @@
-#![no_std]
-
-use once_cell::unsync::Lazy;
+use once_cell::sync::Lazy;
 use word_filter::{Options, WordFilter};
 
 pub static PROFANITY_FILTER: Lazy<WordFilter<'static>> = Lazy::new(|| WordFilter::new(

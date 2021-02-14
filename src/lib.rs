@@ -520,6 +520,18 @@ mod tests {
     }
 
     #[test]
+    fn ass() {
+        assert_eq!(PROFANITY_FILTER.find("ass"), vec!["ass"].into_boxed_slice());
+        assert_eq!(PROFANITY_FILTER.find("@$$"), vec!["ass"].into_boxed_slice());
+        assert_eq!(PROFANITY_FILTER.find("asses"), vec!["asses"].into_boxed_slice());
+        assert_eq!(PROFANITY_FILTER.find("assess"), vec![].into_boxed_slice());
+        assert_eq!(PROFANITY_FILTER.find("aSS hOLe"), vec!["asshole"].into_boxed_slice());
+        assert_eq!(PROFANITY_FILTER.find("JACKASS"), vec!["jackass"].into_boxed_slice());
+        assert_eq!(PROFANITY_FILTER.find("jackassery"), vec!["jackassery"].into_boxed_slice());
+        assert_eq!(PROFANITY_FILTER.find("jack-asses"), vec!["jackasses"].into_boxed_slice());
+    }
+
+    #[test]
     fn finds_bad_words() {
         assert_eq!(PROFANITY_FILTER.censor("FuCk"), "****");
         assert_eq!(PROFANITY_FILTER.censor("nigga"), "*****");

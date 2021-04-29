@@ -6,4 +6,4 @@ edition = "2018"
 
 [dependencies]
 once_cell = "1.5.2"
-word_filter = "0.1.8"
+word_filter = "0.4.0"

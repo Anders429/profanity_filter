@@ -895,6 +895,10 @@ fn main() {
         ]);
     }
 
+    if cfg!(feature = "vagina") {
+        generator.words(&["vagina", "vaginas"]);
+    }
+
     // Offensive.
     if cfg!(feature = "bastard") {
         generator

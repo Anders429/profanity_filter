@@ -872,6 +872,12 @@ fn main() {
             .aliases(&[("mother", "muther")]);
     }
 
+    if cfg!(feature = "penis") {
+        generator
+            .words(&["macropenis", "micropenis", "penis", "penises", "penishead"])
+            .exceptions(&["karpenisi", "penisterophily", "penistone", "scherpenisse"]);
+    }
+
     if cfg!(feature = "shit") {
         generator.words(&[
             "bullshit",
@@ -948,6 +954,7 @@ fn main() {
     if cfg!(feature = "nigger") {
         generator
             .words(&["nigger", "niggers"])
+            .exception("snigger")
             .aliases(&[("nigger", "nibber")]);
     }
 

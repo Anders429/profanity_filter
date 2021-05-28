@@ -273,6 +273,13 @@ mod tests {
     }
 
     #[test]
+    #[cfg_attr(not(feature = "penis"), ignore)]
+    fn penis() {
+        assert_eq!(PROFANITY_FILTER.find("p3n1s3s").collect::<Vec<_>>(), vec!["penises"]);
+        assert_eq!(PROFANITY_FILTER.censor("PENIS"), "*****");
+    }
+
+    #[test]
     #[cfg_attr(not(feature = "shit"), ignore)]
     fn shit() {
         assert_eq!(

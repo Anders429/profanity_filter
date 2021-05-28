@@ -22,8 +22,6 @@ include!(concat!(env!("OUT_DIR"), "/codegen.rs"));
 //         "cums",
 //         "cumshot",
 //         "cunt",
-//         "dick",
-//         "dickhead",
 //         "jerkoff",
 //         "jerkedoff",
 //         "jerkingoff",
@@ -237,6 +235,26 @@ mod tests {
     }
 
     #[test]
+    #[cfg_attr(not(feature = "dick"), ignore)]
+    fn dick() {
+        assert_eq!(
+            PROFANITY_FILTER.find("dick").collect::<Vec<_>>(),
+            vec!["dick"]
+        );
+        assert_eq!(
+            PROFANITY_FILTER
+                .find("what the dickens!")
+                .collect::<Vec<_>>(),
+            Vec::<&str>::new()
+        );
+        assert_eq!(
+            PROFANITY_FILTER.find("🅳ℹ️¢🇰 heads").collect::<Vec<_>>(),
+            vec!["dickheads"]
+        );
+        assert_eq!(PROFANITY_FILTER.censor("🅳ℹ️¢🇰 heads"), "**********");
+    }
+
+    #[test]
     #[cfg_attr(not(feature = "fuck"), ignore)]
     fn fuck() {
         assert_eq!(
@@ -251,10 +269,7 @@ mod tests {
             PROFANITY_FILTER.find("motherfuckin'").collect::<Vec<_>>(),
             vec!["motherfucking"]
         );
-        assert_eq!(
-            PROFANITY_FILTER.censor("f̴̨̠͓͓͈̩̱̯͇̘̘̺͆̓͊u̴̧̝̲̘̭̥̰̣͕̼̞̝̝̥̦͉̺̾͑̅̂͊́̓̅̓̅͑͒̐̈́͆̑͠ͅç̶͖̞̠̯̦͕͇͍̟̝̪̮̲̗̈́̔̓̈́̈͆̃͋ͅk"),
-            "****"
-        );
+        assert_eq!(PROFANITY_FILTER.censor("f̴̨̠͓͓͈̩̱̯͇̘̘̺͆̓͊u̴̧̝̲̘̭̥̰̣͕̼̞̝̝̥̦͉̺̾͑̅̂͊́̓̅̓̅͑͒̐̈́͆̑͠ͅç̶͖̞̠̯̦͕͇͍̟̝̪̮̲̗̈́̔̓̈́̈͆̃͋ͅk"), "****");
     }
 
     #[test]

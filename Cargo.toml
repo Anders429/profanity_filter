@@ -18,11 +18,12 @@ profane = ["damn", "hell"]
 damn = []
 hell = []
 
-vulgar = ["anal", "ass", "blow-job", "cunt", "fuck", "shit"]
+vulgar = ["anal", "ass", "blow-job", "cunt", "dick", "fuck", "shit"]
 anal = []
 ass = []
 blow-job = []
 cunt = []
+dick = []
 fuck = []
 shit = []
 

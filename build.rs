@@ -593,7 +593,7 @@ fn main() {
             // Emoji.
             ("e", "📧"),
             ("h", "♓"),
-            ("i", "ℹ️"),
+            ("i", "ℹ"),
             ("id", "🆔"),
             ("m", "Ⓜ"),
             ("u", "⛎"),
@@ -829,6 +829,31 @@ fn main() {
 
     if cfg!(feature = "cunt") {
         generator.words(&["cunt", "cunts"]);
+    }
+
+    if cfg!(feature = "dick") {
+        generator
+            .words(&[
+                "dick",
+                "dickaround",
+                "dicked",
+                "dickhead",
+                "dickheads",
+                "dicking",
+                "dicks",
+                "dickup",
+            ])
+            .exceptions(&[
+                "benedick",
+                "dickcissel",
+                "dickens",
+                "dicker",
+                "dickey",
+                "dickie",
+                "dicky",
+                "medick",
+                "zaddick",
+            ]);
     }
 
     if cfg!(feature = "fuck") {

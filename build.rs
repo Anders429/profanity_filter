@@ -674,6 +674,7 @@ fn main() {
                 "ass",
                 "asses",
                 "asshole",
+                "assholes",
                 "dumbass",
                 "dumbasses",
                 "jackass",

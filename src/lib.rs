@@ -1,3 +1,7 @@
+#![no_std]
+
+extern crate alloc;
+
 include!(concat!(env!("OUT_DIR"), "/codegen.rs"));
 
 // pub static PROFANITY_FILTER: Lazy<WordFilter<'static>> = Lazy::new(|| WordFilter::new(
@@ -98,6 +102,7 @@ include!(concat!(env!("OUT_DIR"), "/codegen.rs"));
 #[cfg(test)]
 mod tests {
     use crate::PROFANITY_FILTER;
+    use alloc::{vec, vec::Vec};
 
     #[test]
     #[cfg_attr(not(feature = "damn"), ignore)]
@@ -245,6 +250,10 @@ mod tests {
         assert_eq!(
             PROFANITY_FILTER.find("motherfuckin'").collect::<Vec<_>>(),
             vec!["motherfucking"]
+        );
+        assert_eq!(
+            PROFANITY_FILTER.censor("f̴̨̠͓͓͈̩̱̯͇̘̘̺͆̓͊u̴̧̝̲̘̭̥̰̣͕̼̞̝̝̥̦͉̺̾͑̅̂͊́̓̅̓̅͑͒̐̈́͆̑͠ͅç̶͖̞̠̯̦͕͇͍̟̝̪̮̲̗̈́̔̓̈́̈͆̃͋ͅk"),
+            "****"
         );
     }
 

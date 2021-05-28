@@ -12,11 +12,13 @@ word_filter = {path = "../word_filter"}
 word_filter_codegen = {path = "../word_filter/word_filter_codegen"}
 
 [features]
+default = ["profane", "vulgar", "offensive", "middle-finger-emoji"]
+
 profane = ["damn", "hell"]
 damn = []
 hell = []
 
-vulgar = ["anal", "ass", "blow-job", "fuck", "shit"]
+vulgar = ["anal", "ass", "blow-job", "cunt", "fuck", "shit"]
 anal = []
 ass = []
 blow-job = []

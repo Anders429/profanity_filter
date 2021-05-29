@@ -875,6 +875,11 @@ fn main() {
             .aliases(&[("mother", "muther")]);
     }
 
+    if cfg!(feature = "jerk-off") {
+        generator
+            .words(&["jerkedoff", "jerkingoff", "jerkoff", "jerksoff"]);
+    }
+
     if cfg!(feature = "jizz") {
         generator
             .words(&["jizz", "jizzed", "jizzer", "jizzes", "jizzing"])

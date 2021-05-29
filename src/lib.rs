@@ -25,9 +25,6 @@ include!(concat!(env!("OUT_DIR"), "/codegen.rs"));
 //         "jerkoff",
 //         "jerkedoff",
 //         "jerkingoff",
-//         "jizz",
-//         "jizzed",
-//         "jizzing",
 //         "pussy",
 //         "sex",
 //         // Offensive.
@@ -270,6 +267,13 @@ mod tests {
             vec!["motherfucking"]
         );
         assert_eq!(PROFANITY_FILTER.censor("f̴̨̠͓͓͈̩̱̯͇̘̘̺͆̓͊u̴̧̝̲̘̭̥̰̣͕̼̞̝̝̥̦͉̺̾͑̅̂͊́̓̅̓̅͑͒̐̈́͆̑͠ͅç̶͖̞̠̯̦͕͇͍̟̝̪̮̲̗̈́̔̓̈́̈͆̃͋ͅk"), "****");
+    }
+
+    #[test]
+    #[cfg_attr(not(feature = "jerk-off"), ignore)]
+    fn jerk_off() {
+        assert_eq!(PROFANITY_FILTER.find("jerking off").collect::<Vec<_>>(), vec!["jerkingoff"]);
+        assert_eq!(PROFANITY_FILTER.find("jerk-0ff").collect::<Vec<_>>(), vec!["jerkoff"]);
     }
 
     #[test]

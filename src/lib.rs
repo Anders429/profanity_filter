@@ -11,20 +11,12 @@ include!(concat!(env!("OUT_DIR"), "/codegen.rs"));
 //         // https://www.reddit.com/r/copypasta/comments/fca22g/every_swear_word_in_alphabetical_order/
 
 //         // Vulgar.
-//         "cock",
-//         "cocks",
-//         "cocksucker",
-//         "cocksuckers",
-//         "cocksucking",
 //         "cum",
 //         "cummed",
 //         "cumming",
 //         "cums",
 //         "cumshot",
 //         "cunt",
-//         "jerkoff",
-//         "jerkedoff",
-//         "jerkingoff",
 //         "pussy",
 //         "sex",
 //         // Offensive.
@@ -33,54 +25,6 @@ include!(concat!(env!("OUT_DIR"), "/codegen.rs"));
 //     ],
 //     // Exceptions.
 //     &[
-//         // cock
-//         "bibcock",
-//         "cockade",
-//         "cockamamie",
-//         "cockamamy",
-//         "cockapoo",
-//         "cockateel",
-//         "cockatiel",
-//         "cockatrice",
-//         "cockatoo",
-//         "cockboat",
-//         "cockchafer",
-//         "cockcrow",
-//         "cocked",
-//         "cocker",
-//         "cockeye",
-//         "cockhorse",
-//         "cockier",
-//         "cockiest",
-//         "cockily",
-//         "cockiness",
-//         "cocking",
-//         "cockle",
-//         "cockling",
-//         "cockloft",
-//         "cockney",
-//         "cockpit",
-//         "cockroach",
-//         "cockscomb",
-//         "cockshut",
-//         "cockspur",
-//         "cocktail",
-//         "cocky",
-//         "gamecock",
-//         "gorcock",
-//         "haycock",
-//         "moorcock",
-//         "peacock",
-//         "petcock",
-//         "pinchcock",
-//         "poppycock",
-//         "recock",
-//         "seacock",
-//         "shuttlecock",
-//         "stopcock",
-//         "uncock",
-//         "weathercock",
-//         "woodcock",
 //         // cum
 //         // https://www.thefreedictionary.com/words-containing-cum 7-letter
 //         "acumen",
@@ -219,6 +163,13 @@ mod tests {
     }
 
     #[test]
+    #[cfg_attr(not(feature = "cock"), ignore)]
+    fn cock() {
+        assert_eq!(PROFANITY_FILTER.find("cocks").collect::<Vec<_>>(), vec!["cocks"]);
+        assert_eq!(PROFANITY_FILTER.find("C0CK5UCKER5").collect::<Vec<_>>(), vec!["cocksuckers"]);
+    }
+
+    #[test]
     #[cfg_attr(not(feature = "cunt"), ignore)]
     fn cunt() {
         assert_eq!(
@@ -272,15 +223,27 @@ mod tests {
     #[test]
     #[cfg_attr(not(feature = "jerk-off"), ignore)]
     fn jerk_off() {
-        assert_eq!(PROFANITY_FILTER.find("jerking off").collect::<Vec<_>>(), vec!["jerkingoff"]);
-        assert_eq!(PROFANITY_FILTER.find("jerk-0ff").collect::<Vec<_>>(), vec!["jerkoff"]);
+        assert_eq!(
+            PROFANITY_FILTER.find("jerking off").collect::<Vec<_>>(),
+            vec!["jerkingoff"]
+        );
+        assert_eq!(
+            PROFANITY_FILTER.find("jerk-0ff").collect::<Vec<_>>(),
+            vec!["jerkoff"]
+        );
     }
 
     #[test]
     #[cfg_attr(not(feature = "jizz"), ignore)]
     fn jizz() {
-        assert_eq!(PROFANITY_FILTER.find("JIZZ").collect::<Vec<_>>(), vec!["jizz"]);
-        assert_eq!(PROFANITY_FILTER.find("gizzums").collect::<Vec<_>>(), vec!["jizzes"]);
+        assert_eq!(
+            PROFANITY_FILTER.find("JIZZ").collect::<Vec<_>>(),
+            vec!["jizz"]
+        );
+        assert_eq!(
+            PROFANITY_FILTER.find("gizzums").collect::<Vec<_>>(),
+            vec!["jizzes"]
+        );
     }
 
     #[test]

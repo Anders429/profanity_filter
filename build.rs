@@ -830,6 +830,68 @@ fn main() {
         generator.words(&["blowjob", "blowjobs"]);
     }
 
+    if cfg!(feature = "cock") {
+        generator
+            .words(&[
+                "cock",
+                "cocks",
+                "cocksuck",
+                "cocksucker",
+                "cocksuckers",
+                "cocksucking",
+                "cocksuckings",
+            ])
+            .exceptions(&[
+                "bibcock",
+                "cockade",
+                "cockamamie",
+                "cockamamy",
+                "cockapoo",
+                "cockateel",
+                "cockatiel",
+                "cockatrice",
+                "cockatoo",
+                "cockboat",
+                "cockchafer",
+                "cockcrow",
+                "cocked",
+                "cocker",
+                "cockeye",
+                "cockhorse",
+                "cockier",
+                "cockiest",
+                "cockily",
+                "cockiness",
+                "cocking",
+                "cockle",
+                "cockling",
+                "cockloft",
+                "cockney",
+                "cockpit",
+                "cockroach",
+                "cockscomb",
+                "cockshut",
+                "cockspur",
+                "cocktail",
+                "cocky",
+                "gamecock",
+                "gorcock",
+                "haycock",
+                "moorcock",
+                "peacock",
+                "petcock",
+                "pinchcock",
+                "poppycock",
+                "recock",
+                "seacock",
+                "shuttlecock",
+                "stopcock",
+                "uncock",
+                "weathercock",
+                "woodcock",
+            ]);
+    }
+
     if cfg!(feature = "cunt") {
         generator.words(&["cunt", "cunts"]);
     }
@@ -876,8 +938,7 @@ fn main() {
     }
 
     if cfg!(feature = "jerk-off") {
-        generator
-            .words(&["jerkedoff", "jerkingoff", "jerkoff", "jerksoff"]);
+        generator.words(&["jerkedoff", "jerkingoff", "jerkoff", "jerksoff"]);
     }
 
     if cfg!(feature = "jizz") {

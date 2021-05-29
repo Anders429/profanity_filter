@@ -273,9 +273,19 @@ mod tests {
     }
 
     #[test]
+    #[cfg_attr(not(feature = "jizz"), ignore)]
+    fn jizz() {
+        assert_eq!(PROFANITY_FILTER.find("JIZZ").collect::<Vec<_>>(), vec!["jizz"]);
+        assert_eq!(PROFANITY_FILTER.find("gizzums").collect::<Vec<_>>(), vec!["jizzes"]);
+    }
+
+    #[test]
     #[cfg_attr(not(feature = "penis"), ignore)]
     fn penis() {
-        assert_eq!(PROFANITY_FILTER.find("p3n1s3s").collect::<Vec<_>>(), vec!["penises"]);
+        assert_eq!(
+            PROFANITY_FILTER.find("p3n1s3s").collect::<Vec<_>>(),
+            vec!["penises"]
+        );
         assert_eq!(PROFANITY_FILTER.censor("PENIS"), "*****");
     }
 
@@ -295,7 +305,10 @@ mod tests {
     #[test]
     #[cfg_attr(not(feature = "vagina"), ignore)]
     fn vagina() {
-        assert_eq!(PROFANITY_FILTER.find("vagina").collect::<Vec<_>>(), vec!["vagina"]);
+        assert_eq!(
+            PROFANITY_FILTER.find("vagina").collect::<Vec<_>>(),
+            vec!["vagina"]
+        );
     }
 
     #[test]

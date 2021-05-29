@@ -502,7 +502,10 @@ fn main() {
             ("Z", "Ζ"),
             // Slang.
             ("ck", "k"),
+            ("ed", "d"),
             ("er", "a"),
+            ("er", "r"),
+            ("es", "s"),
             ("ing", "in"),
             ("ing", "in'"),
             ("th", "d"),
@@ -870,6 +873,18 @@ fn main() {
                 "motherfucking",
             ])
             .aliases(&[("mother", "muther")]);
+    }
+
+    if cfg!(feature = "jizz") {
+        generator
+            .words(&["jizz", "jizzed", "jizzer", "jizzes", "jizzing"])
+            .aliases(&[
+                ("jizz", "chism"),
+                ("jizz", "gism"),
+                ("jizz", "gizzum"),
+                ("jizz", "jism"),
+                ("jizz", "jizzum"),
+            ]);
     }
 
     if cfg!(feature = "penis") {

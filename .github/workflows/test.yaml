@@ -2,9 +2,7 @@ name: Tests
 
 on:
   push:
-    branches: [ master ]
   pull_request:
-    branches: [ master ]
 
 env:
   CARGO_TERM_COLOR: always
@@ -18,7 +16,7 @@ jobs:
           - stable
           - beta
           - nightly
-          - 1.36.0
+          - 1.51.0
     steps:
     - uses: actions/checkout@v2
     - uses: actions-rs/toolchain@v1
@@ -28,6 +26,27 @@ jobs:
     - uses: actions-rs/cargo@v1
       with:
         command: test
+
+  no_std:
+    runs-on: ubuntu-latest
+    strategy:
+      matrix:
+        rust:
+          - stable
+          - beta
+          - nightly
+          - 1.51.0
+    steps:
+    - uses: actions/checkout@v2
+    - uses: actions-rs/toolchain@v1
+      with:
+        toolchain: ${{ matrix.rust }}
+        target: thumbv6m-none-eabi
+        override: true
+    - uses: actions-rs/cargo@v1
+      with:
+        command: build
+        args: --target thumbv6m-none-eabi --verbose
 
   codecov:
     runs-on: ubuntu-latest

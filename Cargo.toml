@@ -3,7 +3,53 @@ name = "profanity_filter"
 version = "0.1.0"
 authors = ["Anders Evensen"]
 edition = "2018"
+publish = false
 
 [dependencies]
-once_cell = "1.5.2"
-word_filter = "0.1.8"
+word_filter = "0.5.1"
+
+[build-dependencies]
+word_filter_codegen = "0.5.1"
+
+[features]
+default = ["profane", "vulgar", "offensive", "middle-finger-emoji"]
+
+profane = ["damn", "hell"]
+damn = []
+hell = []
+
+vulgar = [
+    "anal",
+    "ass",
+    "blow-job",
+    "cock",
+    "cunt",
+    "dick",
+    "fuck",
+    "jerk-off",
+    "jizz",
+    "penis",
+    "shit",
+    "vagina"
+]
+anal = []
+ass = []
+blow-job = []
+cock = []
+cunt = []
+dick = []
+fuck = []
+jerk-off = []
+jizz = []
+penis = []
+shit = []
+vagina = []
+
+offensive = ["bastard", "bitch", "faggot", "nigger", "slut"]
+bastard = []
+bitch = []
+faggot = []
+nigger = []
+slut = []
+
+middle-finger-emoji = []

@@ -1,0 +1,38 @@
+name: Compile Demo
+
+on:
+  push:
+    branches:
+      - master
+
+env:
+  CARGO_TERM_COLOR: always
+
+jobs:
+  compile:
+    runs-on: ubuntu-latest
+    defaults:
+      run:
+        working-directory: ./examples/demo
+    steps:
+    - uses: actions/checkout@v2
+    - uses: jetli/wasm-pack-action@v0.3.0
+    - run: wasm-pack build --target web
+    - run: mkdir output
+    - uses: canastro/copy-file-action@master
+      with:
+        source: examples/demo/index.html
+        target: examples/demo/output/index.html
+    - uses: canastro/copy-file-action@master
+      with:
+        source: examples/demo/pkg/demo.js
+        target: examples/demo/output/demo.js
+    - uses: canastro/copy-file-action@master
+      with:
+        source: examples/demo/pkg/demo_bg.wasm
+        target: examples/demo/output/demo_bg.wasm
+    - uses: peaceiris/actions-gh-pages@v3
+      with:
+        github_token: ${{ secrets.GITHUB_TOKEN }}
+        publish_dir: examples/demo/output
+        destination_dir: demo

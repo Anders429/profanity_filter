@@ -1,0 +1,11 @@
+[package]
+name = "demo"
+version = "0.1.0"
+edition = "2018"
+
+[dependencies]
+profanity_filter = {path = "../.."}
+wasm-bindgen = "0.2"
+
+[lib]
+crate-type = ["cdylib"]

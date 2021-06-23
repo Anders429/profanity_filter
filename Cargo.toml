@@ -6,10 +6,11 @@ edition = "2018"
 publish = false
 
 [dependencies]
-word_filter = "0.5.1"
+word_filter = {version = "0.6.0"}
 
 [build-dependencies]
-word_filter_codegen = "0.5.1"
+indoc = "1.0.3"
+word_filter_codegen = {version = "0.6.0"}
 
 [features]
 default = ["profane", "vulgar", "offensive", "middle-finger-emoji"]
@@ -29,6 +30,7 @@ vulgar = [
     "jerk-off",
     "jizz",
     "penis",
+    "sex",
     "shit",
     "vagina"
 ]
@@ -42,6 +44,7 @@ fuck = []
 jerk-off = []
 jizz = []
 penis = []
+sex = []
 shit = []
 vagina = []
 

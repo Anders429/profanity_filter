@@ -399,11 +399,4 @@ mod tests {
         assert_eq!(PROFANITY_FILTER.censor("🖕🏾"), "*");
         assert_eq!(PROFANITY_FILTER.censor("🖕🏿"), "*");
     }
-
-    #[test]
-    fn size() {
-        extern crate std;
-        std::dbg!(std::mem::size_of_val(&PROFANITY_FILTER));
-        assert!(false);
-    }
 }

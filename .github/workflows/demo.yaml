@@ -9,10 +9,12 @@ env:
 jobs:
   compile:
     runs-on: ubuntu-latest
+    defaults:
+      run:
+        working-directory: ./examples/demo
     steps:
     - uses: actions/checkout@v2
     - uses: jetli/wasm-pack-action@v0.3.0
-    - run: cd examples/demo
     - run: wasm-pack build --target web
     - run: mkdir output
     - run: mv index.html output/index.html

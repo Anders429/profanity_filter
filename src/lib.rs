@@ -165,8 +165,14 @@ mod tests {
     #[test]
     #[cfg_attr(not(feature = "cock"), ignore)]
     fn cock() {
-        assert_eq!(PROFANITY_FILTER.find("cocks").collect::<Vec<_>>(), vec!["cocks"]);
-        assert_eq!(PROFANITY_FILTER.find("C0CK5UCKER5").collect::<Vec<_>>(), vec!["cocksuckers"]);
+        assert_eq!(
+            PROFANITY_FILTER.find("cocks").collect::<Vec<_>>(),
+            vec!["cocks"]
+        );
+        assert_eq!(
+            PROFANITY_FILTER.find("C0CK5UCKER5").collect::<Vec<_>>(),
+            vec!["cocksuckers"]
+        );
     }
 
     #[test]
@@ -260,7 +266,10 @@ mod tests {
     #[test]
     #[cfg_attr(not(feature = "sex"), ignore)]
     fn sex() {
-        assert_eq!(PROFANITY_FILTER.find("sex").collect::<Vec<_>>(), vec!["sex"]);
+        assert_eq!(
+            PROFANITY_FILTER.find("sex").collect::<Vec<_>>(),
+            vec!["sex"]
+        );
     }
 
     #[test]

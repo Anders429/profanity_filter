@@ -20,20 +20,18 @@ jobs:
     - uses: canastro/copy-file-action@master
       with:
         working-directory: ./examples/demo
-        source: index.html
-        target: output/index.html
+        source: examples/demo/index.html
+        target: examples/demo/output/index.html
     - uses: canastro/copy-file-action@master
       with:
         working-directory: ./examples/demo
-        source: pkg/demo.js
-        target: output/demo.js
+        source: examples/demo/pkg/demo.js
+        target: examples/demo/output/demo.js
     - uses: canastro/copy-file-action@master
       with:
-        working-directory: ./examples/demo
-        source: pkg/demo_bg.wasm
-        target: output/demo_bg.wasm
+        source: examples/demo/pkg/demo_bg.wasm
+        target: examples/demo/output/demo_bg.wasm
     - uses: peaceiris/actions-gh-pages@v3
       with:
-        working-directory: ./examples/demo
         github_token: ${{ secrets.GITHUB_TOKEN }}
-        publish_dir: ./output
+        publish_dir: examples/demo/output

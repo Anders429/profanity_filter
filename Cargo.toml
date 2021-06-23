@@ -6,13 +6,13 @@ edition = "2018"
 publish = false
 
 [dependencies]
-word_filter = {version = "0.6.0", path = "../word_filter"}
+word_filter = {version = "0.6.0", git = "https://github.com/Anders429/word_filter", branch = "0.6.0"}
 # word_filter = {version = "0.5.1"}
 
 [build-dependencies]
 indoc = "1.0.3"
 # word_filter_codegen = {version = "0.5.1"}
-word_filter_codegen = {version = "0.6.0", path = "../word_filter/word_filter_codegen"}
+word_filter_codegen = {version = "0.6.0", git = "https://github.com/Anders429/word_filter", branch = "0.6.0"}
 
 [features]
 default = ["profane", "vulgar", "offensive", "middle-finger-emoji"]

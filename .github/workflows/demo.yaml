@@ -17,9 +17,18 @@ jobs:
     - uses: jetli/wasm-pack-action@v0.3.0
     - run: wasm-pack build --target web
     - run: mkdir output
-    - run: mv index.html output/index.html
-    - run: mv pkg/demo.js output/demo.js
-    - run: mv pkg/demo_bg.wasm output/demo_bg.wasm
+    - uses: canastro/copy-file-action@master
+      with:
+        source: index.html
+        target: output/index.html
+    - uses: canastro/copy-file-action@master
+      with:
+        source: pkg/demo.js
+        target: output/demo.js
+    - uses: canastro/copy-file-action@master
+      with:
+        source: pkg/demo_bg.wasm
+        target: output/demo_bg.wasm
     - uses: peaceiris/actions-gh-pages@v3
       with:
         github_token: ${{ secrets.GITHUB_TOKEN }}

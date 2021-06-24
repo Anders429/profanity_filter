@@ -1578,7 +1578,7 @@ fn main() {
     }
 
     if cfg!(feature = "cunt") {
-        generator.words(&["cunt", "cunts"]);
+        generator.words(&["cunt", "cunts"]).exceptions(&["scunthorpe"]);
     }
 
     if cfg!(feature = "dick") {

@@ -1645,6 +1645,26 @@ fn main() {
             .exceptions(&["karpenisi", "penisterophily", "penistone", "scherpenisse"]);
     }
 
+    if cfg!(feature = "piss") {
+        generator.words(&[
+            "piss",
+            "pissant",
+            "pissants",
+            "pissed",
+            "pisser",
+            "pissers",
+            "pisses",
+            "pissing",
+            "pissoir",
+            "pissoirs",
+        ]).exceptions(&[
+            "inspissate",
+            "inspissating",
+            "inspissation",
+            "inspissator",
+        ]);
+    }
+
     if cfg!(feature = "sex") {
         generator
             .words(&[

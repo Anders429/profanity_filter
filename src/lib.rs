@@ -264,6 +264,14 @@ mod tests {
     }
 
     #[test]
+    #[cfg_attr(not(feature = "piss"), ignore)]
+    fn piss() {
+        assert_eq!(
+            PROFANITY_FILTER.censor("Pissin'"), "*******"
+        )
+    }
+
+    #[test]
     #[cfg_attr(not(feature = "sex"), ignore)]
     fn sex() {
         assert_eq!(

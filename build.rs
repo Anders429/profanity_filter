@@ -507,7 +507,6 @@ fn main() {
             ("Z", "2"),
             ("Z", "Ζ"),
             // Slang.
-            ("ck", "k"),
             ("er", "a"),
             ("er", "r"),
             ("es", "s"),
@@ -1620,7 +1619,7 @@ fn main() {
                 "motherfuckers",
                 "motherfucking",
             ])
-            .aliases(&[("mother", "muther")]);
+            .aliases(&[("mother", "muther"), ("fuck", "fuk")]);
     }
 
     if cfg!(feature = "jerk-off") {
@@ -1769,6 +1768,7 @@ fn main() {
                 "sextuplicate",
                 "sextupling",
                 "sextuply",
+                "sussex",
             ]);
     }
 

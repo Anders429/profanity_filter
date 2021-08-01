@@ -1359,7 +1359,6 @@ fn main() {
     if cfg!(feature = "ass") {
         generator
             .words(&[
-                " ass ",
                 "ass",
                 "asses",
                 "asshole",

@@ -5,7 +5,7 @@ use std::{
     io::{BufWriter, Write},
     path::Path,
 };
-use word_filter_codegen::{Visibility, WordFilterGenerator};
+use word_filter_codegen::{SeparatorFlags, Visibility, WordFilterGenerator};
 
 fn main() {
     let file = Path::new(&env::var("OUT_DIR").unwrap()).join("codegen.rs");
@@ -16,9 +16,10 @@ fn main() {
         .doc(indoc!(
             "This is a test doc.
 
-        Hello world!"
+            Hello world!"
         ))
         .visibility(Visibility::Pub)
+        .separator_flags(SeparatorFlags::BETWEEN_WORDS)
         .separators(&[" ", "_", "-", ".", "\n", "\t"])
         // Non-spacing marks.
         .separators('\u{300}'..='\u{36f}')

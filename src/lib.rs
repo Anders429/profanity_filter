@@ -147,6 +147,7 @@ mod tests {
                 .collect::<Vec<_>>(),
             Vec::<&str>::new(),
         );
+        assert_eq!(PROFANITY_FILTER.censor("fat ass"), "fat ***");
     }
 
     #[test]

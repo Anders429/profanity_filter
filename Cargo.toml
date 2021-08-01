@@ -6,11 +6,11 @@ edition = "2018"
 publish = false
 
 [dependencies]
-word_filter = {version = "0.6.0"}
+word_filter = "0.7.0"
 
 [build-dependencies]
 indoc = "1.0.3"
-word_filter_codegen = {version = "0.6.0"}
+word_filter_codegen = "0.7.0"
 
 [features]
 default = ["profane", "vulgar", "offensive", "middle-finger-emoji"]
